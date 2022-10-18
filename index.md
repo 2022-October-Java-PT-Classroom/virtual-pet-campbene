@@ -10,9 +10,9 @@ Create a virtual pet. Maybe we can make this a fad!
 - [ ] Change the README.md file in your project folder to describe what you've done with your project. No fancy formatting is necessary. Just separate paragraphs with an empty line. (If you'd like to learn more about Markdown formatting, check out the [Github Markdown Guide](https://guides.github.com/features/mastering-markdown/).)
 
 ## Classes
-- [ ] You will need to create a `VirtualPet` class.
+- [ ] You will need to create a `virtual_pet.VirtualPet` class.
 - [ ] `VirtualPetApplication` will house the `main` method.  This is the starting point when the application runs.
-- [ ] **Stretch goal** Build out unit tests in the `VirtualPetTest` class to test the behaviors placed in `VirtualPet`
+- [ ] **Stretch goal** Build out unit tests in the `VirtualPetTest` class to test the behaviors placed in `virtual_pet.VirtualPet`
 
 ## Details
 
@@ -20,7 +20,7 @@ Create a virtual pet application. This is your version of a Tamagotchi or DigiPe
 
 Think of which instance variables and methods you will need. We give suggestions below. Remember that instance variables represent the state of your pet. Methods represent the behavior of your pet, which would include its responses to you feeding or playing with it.
 
-Most games include what is called a *game loop*, a loop which updates everything in the game, representing the passage of time. We exit this loop when something happens that should cause the game to end. Include a `tick()` method (think clocks, not parasites) in your `VirtualPet` class representing the passage of a unit of time. This should do things like update instance variables of `VirtualPet` that are time dependent, such as hunger or thirst. You should call the `tick()` to represent the passage of time after each interaction with the user.
+Most games include what is called a *game loop*, a loop which updates everything in the game, representing the passage of time. We exit this loop when something happens that should cause the game to end. Include a `tick()` method (think clocks, not parasites) in your `virtual_pet.VirtualPet` class representing the passage of a unit of time. This should do things like update instance variables of `virtual_pet.VirtualPet` that are time dependent, such as hunger or thirst. You should call the `tick()` to represent the passage of time after each interaction with the user.
 
 There is always some confusion with this `tick()` method. It has some flexibility, what you are doing is changing the properties of your Virtual Pet at some rate in this method...every time this method is called, those properties specified in this method would update. 
 
@@ -45,7 +45,7 @@ If you play with the pet, perhaps that makes it more tired. Have fun with this p
 
 Also, remember that more features `!=` better. Pick a focus for your pet. Maybe go with a theme.
 
-Your user interface should live in the `main` method of the `VirtualPetApp` class. Your `VirtualPet` class should not be writing messages to the console or reading user input. These are responsibilities of the `VirtualPetApp` class.
+Your user interface should live in the `main` method of the `VirtualPetApp` class. Your `virtual_pet.VirtualPet` class should not be writing messages to the console or reading user input. These are responsibilities of the `VirtualPetApp` class.
 
 An example user interface is below (yours doesn't need to match this!):
 
@@ -70,7 +70,7 @@ You feed Horace.
 
 ### Required Tasks
 
-- VirtualPet class
+- virtual_pet.VirtualPet class
   - [ ] Create a `tick()` method that represents the passage of time.
   - [ ] Create at least three instance variables (aka attributes aka properties aka fields).
   - [ ] Create at least three methods (messages you send to your pet).
