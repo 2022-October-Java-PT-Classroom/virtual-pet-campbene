@@ -1,33 +1,42 @@
 package virtual_pet;
 
-import java.util.Scanner;
-
 public class VirtualPet {
-    Scanner input = new Scanner(System.in);
-    String petName;
-    int hungerLevel = 6, happinessLevel = 6, sleepinessLevel = 6;
-    int angerLevel = 0; // value to track when a pet might leave if it gets neglected
-//  attribute levels are determined from 0-10 with 10 being fully satisfied
-//  and 0 being extreme need of attention.
-    public static VirtualPet createName(String name){
-        VirtualPet n = new VirtualPet();
-        n.petName = name;
-        return n;
+    private String petName;
+    private int hungerLevel = 6;
+    private int happinessLevel = 6;
+    private int sleepinessLevel = 6;
+    private int angerLevel = 0;
+
+    public String getPetName() {
+        return petName;
+    }
+    public int getHungerLevel() {
+        return hungerLevel;
+    }
+    public int getHappinessLevel() {
+        return happinessLevel;
+    }
+    public int getSleepinessLevel() {
+        return sleepinessLevel;
+    }
+    public int getAngerLevel() {
+        return angerLevel;
+    }
+
+    public VirtualPet (String name){
+        this.petName = name;
     }
 
     public void feedPet(){
-        hungerLevel = 10;
-        System.out.println(petName + " is super happy to eat some food!");
+        hungerLevel = 11;
     }
 
     public void playGame(){
-        happinessLevel = 10;
-        System.out.println(petName + " loves getting to play with you!");
+        happinessLevel = 11;
     }
 
     public void goToBed(){
-        sleepinessLevel = 10;
-        System.out.println(petName + " is sleeping peacefully in their bed!");
+        sleepinessLevel = 11;
     }
 
     public void tick(){
@@ -36,51 +45,42 @@ public class VirtualPet {
         sleepinessLevel--;
     }
 
-    public void autoPet(){
-        if(hungerLevel < 2) {
-            System.out.println(petName + " is too hungry to do anything else and has instead eats your house plants");
-            hungerLevel = 6;
-            angerLevel++;
+    public boolean checkLevel(int levelToCheck){
+        if (levelToCheck < 2){
+            return true;
+        } else {
+            return false;
         }
-        if(sleepinessLevel < 2){
-            System.out.println(petName + " is way too tired, they are napping on their bed instead");
-            sleepinessLevel = 6;
-            angerLevel++;
-        }
-        if(happinessLevel < 2) {
-            System.out.println(petName + " has way to much energy and is now tearing up your couch for fun instead.");
-            happinessLevel = 6;
-            angerLevel++;
+    }
+    public void autoHungerLevel(){
+        hungerLevel=6;
+        angerLevel++;
+    }
+    public void autoHappinessLevel(){
+        happinessLevel =6;
+        angerLevel++;
+    }
+    public void autoSleepinessLevel(){
+        sleepinessLevel = 6;
+        angerLevel++;
+    }
+
+    public boolean checkLowestLevel(int levelToCheck, int levelCompared1, int levelCompared2){
+        if (levelToCheck <= levelCompared1 && levelToCheck <= levelCompared2) {
+            return true;
+        } else {
+            return false;
         }
     }
 
-    public void randPet(int userTask){
-        if(hungerLevel <= sleepinessLevel && hungerLevel <= happinessLevel){
-            if (userTask == 1) feedPet();
-            else {
-                System.out.println(petName + " decided they would rather eat some leftover kibble instead.");
-                hungerLevel+=2;
-            }
-        } else if(sleepinessLevel <= hungerLevel && sleepinessLevel <= happinessLevel){
-            if (userTask == 3) goToBed();
-            else {
-                System.out.println(petName + " found a nice spot in the sun and took a quick nap instead.");
-                sleepinessLevel+=2;
-            }
-        } else { //if(happinessLevel <= hungerLevel && happinessLevel <= sleepinessLevel)
-            if (userTask == 2) playGame();
-            else {
-                System.out.println(petName + " is bored and is playing with some toys by itself instead");
-                happinessLevel+=2;
-            }
-        }
+    public void randHunger() {
+        hungerLevel += 2;
     }
-
-    public void getStats(){
-        System.out.println("Here are " + petName + "'s current stats:");
-        System.out.println("Hunger Level: " + hungerLevel + showLevel(hungerLevel) + "   " +
-                "Happiness Level: " + happinessLevel + showLevel(happinessLevel) + "   " +
-                "Sleepiness Level: " + sleepinessLevel + showLevel(sleepinessLevel));
+    public void randHappy() {
+        happinessLevel += 2;
+    }
+    public void randSleep(){
+        sleepinessLevel+=2;
     }
 
     public String showLevel(int level){
@@ -93,8 +93,3 @@ public class VirtualPet {
     }
 
 }
-
-/*things to add:
-1: check that rand does not overwrite the action you chose if it would have been the same action
-2:
- */
