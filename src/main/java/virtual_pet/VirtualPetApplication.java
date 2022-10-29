@@ -42,21 +42,23 @@ public class VirtualPetApplication {
                 "Sleepiness Level: " + newPet.getSleepinessLevel() + newPet.showLevel(newPet.getSleepinessLevel()));
             userSelection = input.nextInt();
             caseSwitch = userSelection;
-            if (newPet.checkLevel(newPet.getHungerLevel()) && userSelection!=5 && userSelection!=1) {
-                caseSwitch = 6;
-            } else if (newPet.checkLevel(newPet.getHappinessLevel()) && userSelection!=5 && userSelection!=2) {
-                caseSwitch = 7;
-            } else if (newPet.checkLevel(newPet.getSleepinessLevel()) && userSelection!=5 && userSelection!=3) {
-                caseSwitch = 8;
-            } else {
-                randAction = rand.nextInt(10);
-                if (randAction < 4 && userSelection != 5) {
-                    if (newPet.checkLowestLevel(newPet.getHungerLevel(), newPet.getHappinessLevel(), newPet.getSleepinessLevel()) && userSelection != 1) {
-                        caseSwitch = 9;
-                    } else if (newPet.checkLowestLevel(newPet.getHappinessLevel(), newPet.getHungerLevel(), newPet.getSleepinessLevel()) && userSelection != 2) {
-                        caseSwitch = 10;
-                    } else if (userSelection != 3) {
-                        caseSwitch = 11;
+            if (userSelection!=5) {
+                if (newPet.checkLevel(newPet.getHungerLevel()) && userSelection != 1) {
+                    caseSwitch = 6;
+                } else if (newPet.checkLevel(newPet.getHappinessLevel()) && userSelection != 2) {
+                    caseSwitch = 7;
+                } else if (newPet.checkLevel(newPet.getSleepinessLevel()) && userSelection != 3) {
+                    caseSwitch = 8;
+                } else {
+                    randAction = rand.nextInt(10);
+                    if (randAction < 4) {
+                        if (newPet.checkLowestLevel(newPet.getHungerLevel(), newPet.getHappinessLevel(), newPet.getSleepinessLevel()) && userSelection != 1) {
+                            caseSwitch = 9;
+                        } else if (newPet.checkLowestLevel(newPet.getHappinessLevel(), newPet.getHungerLevel(), newPet.getSleepinessLevel()) && userSelection != 2) {
+                            caseSwitch = 10;
+                        } else if (userSelection != 3) {
+                            caseSwitch = 11;
+                        }
                     }
                 }
             }
